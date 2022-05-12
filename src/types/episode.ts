@@ -1,4 +1,6 @@
-export type episode = {
+import { Info } from "./general";
+
+export type episodeType = {
   id: number;
   name: string;
   air_date: string;
@@ -8,14 +10,7 @@ export type episode = {
   created: string;
 };
 
-export type Info = {
-  count: number;
-  pages: number;
-  next: string | null;
-  prev: string | null;
-};
-
 export interface IEpisodesResponce {
   info: Info;
-  results: episode[];
+  results: episodeType[];
 }

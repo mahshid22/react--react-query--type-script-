@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import { IEpisodesResponce } from "../types/episode";
+import { episodeType } from "../types/episode";
 
 const getEpisode = async (episodeId: number | null) => {
   const { data } = await axios.get(
@@ -10,7 +10,7 @@ const getEpisode = async (episodeId: number | null) => {
 };
 
 export default function useEpisode(episodeId: number | null) {
-  return useQuery<IEpisodesResponce, Error>(
+  return useQuery<episodeType, Error>(
     `episode-${episodeId}`,
     () => getEpisode(episodeId),
     {
