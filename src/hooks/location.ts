@@ -9,7 +9,7 @@ const getLocation = async (locationId: number | null) => {
   return data;
 };
 
-export default function useEpisode(locationId: number | null) {
+export default function useLocationQuery(locationId: number | null) {
   return useQuery<locationType, Error>(
     `location-${locationId}`,
     () => getLocation(locationId),

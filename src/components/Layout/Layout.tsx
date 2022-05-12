@@ -8,6 +8,8 @@ import Episode from "../Episode/Episode";
 import Episodes from "../Episodes/Episodes";
 import Home from "../Home/Home";
 import Footer from "../Footer/Footer";
+import Locations from "../Locations/Locations";
+import Location from "../Location/Location";
 
 interface LayoutProps {}
 
@@ -20,6 +22,8 @@ const Layout = () => (
         <Route element={<Episode />} path="/episodes/:episodeId"></Route>
         <Route element={<Characters />} path="/characters"></Route>
         <Route element={<Character />} path="/characters/:characterId"></Route>
+        <Route element={<Locations />} path="/locations"></Route>
+        <Route element={<Location />} path="/locations/:locationId"></Route>
         <Route element={<Home />} path="/"></Route>
       </Routes>
     </main>

@@ -1,12 +1,13 @@
-import React, { FC } from 'react';
-import styles from './Character.module.css';
+import React, { FC } from "react";
+import useCharacter from "../../hooks/character";
+import styles from "./Character.module.css";
 
 interface CharacterProps {}
 
-const Character: FC<CharacterProps> = () => (
-  <div className={styles.Character}>
-    Character Component
-  </div>
-);
+const Character: FC<CharacterProps> = () => {
+  const characterId = null;
+  const { status, data, error, isFetching } = useCharacter(characterId);
+  return <div className={styles.Character}>Character Component</div>;
+};
 
 export default Character;

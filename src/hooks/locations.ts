@@ -7,6 +7,6 @@ const getLocations = async () => {
   return data;
 };
 
-export default function useEpisodes() {
+export default function useLocations() {
   return useQuery<ILocationResponce, Error>("locations", getLocations);
 }
