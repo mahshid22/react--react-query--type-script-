@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { useQueryClient } from "react-query";
 import { getCharacter } from "../../hooks/character";
+import { getEpisode } from "../../hooks/episode";
+import { getLocation } from "../../hooks/location";
 import styles from "./Card.module.css";
 
 interface CardProps {}
@@ -13,7 +15,20 @@ const Card = () => {
       <img src="./images/310.jpeg" alt="" />
       <div className={styles.characterCard}>
         <p className={styles.characterCardTitle}>
-          <a href="#">Self-Congratulatory Jerry</a>
+          <a
+            href="#"
+            onMouseEnter={async () => {
+              await queryClient.prefetchQuery(
+                `character-1`,
+                () => getCharacter(1),
+                {
+                  staleTime: 70 * 1000 /* 70 second */,
+                }
+              );
+            }}
+          >
+            Self-Congratulatory Jerry
+          </a>
         </p>
         <p className={styles.status}>
           <span className={styles.statusIcon}></span>
@@ -23,7 +38,20 @@ const Card = () => {
 
         <div className={styles.location}>
           <p className={styles.cardLable}>Last known location:</p>
-          <a href="">Nuptia 4</a>
+          <a
+            href=""
+            onMouseEnter={async () => {
+              await queryClient.prefetchQuery(
+                `location-1`,
+                () => getLocation(1),
+                {
+                  staleTime: 70 * 1000 /* 70 second */,
+                }
+              );
+            }}
+          >
+            Nuptia 4
+          </a>
         </div>
         <div className={styles.episode}>
           <p className={styles.cardLable}>First seen in:</p>
@@ -31,8 +59,8 @@ const Card = () => {
             href=""
             onMouseEnter={async () => {
               await queryClient.prefetchQuery(
-                `character-1`,
-                () => getCharacter(1),
+                `episode-1`,
+                () => getEpisode(1),
                 {
                   staleTime: 70 * 1000 /* 70 second */,
                 }
