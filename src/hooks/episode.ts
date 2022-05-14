@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { episodeType } from "../types/episode";
 
-const getEpisode = async (episodeId: number | null) => {
+export const getEpisode = async (episodeId: number | null) => {
   const { data } = await axios.get(
     `${process.env.REACT_APP_BASE_URL}episode/${episodeId}`
   );
