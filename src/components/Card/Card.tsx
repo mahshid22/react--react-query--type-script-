@@ -34,7 +34,7 @@ const Card = () => {
                 `character-1`,
                 () => getCharacter(1),
                 {
-                  staleTime: 70 * 1000,
+                  staleTime: 70 * 1000 /* 70 second */,
                 }
               );
             }}
