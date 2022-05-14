@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
 }
 
 .HeaderLinks {
@@ -35,6 +36,7 @@
   text-align: center;
   font-weight: 900;
   font-size: 2rem;
+  background-color: #fff;
 }
 
 @media (min-width: 555px) {

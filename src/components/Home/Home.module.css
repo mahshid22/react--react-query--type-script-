@@ -1,1 +1,22 @@
-.Home {}
+.Home {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  padding: 1.5em;
+}
+
+@media (min-width: 896px) {
+  .Home {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1155px) {
+  .Home {
+    justify-content: space-around;
+  }
+}
