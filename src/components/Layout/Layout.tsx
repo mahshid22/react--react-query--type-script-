@@ -15,18 +15,24 @@ interface LayoutProps {}
 
 const Layout = () => (
   <div className={styles.Layout}>
-    <Header />
-    <main>
-      <Routes>
-        <Route element={<Episodes />} path="/episodes"></Route>
-        <Route element={<Episode />} path="/episodes/:episodeId"></Route>
-        <Route element={<Characters />} path="/characters"></Route>
-        <Route element={<Character />} path="/characters/:characterId"></Route>
-        <Route element={<Locations />} path="/locations"></Route>
-        <Route element={<Location />} path="/locations/:locationId"></Route>
-        <Route element={<Home />} path="/"></Route>
-      </Routes>
-    </main>
+    <div className={styles.LayoutMain}>
+      <Header />
+      <main>
+        <Routes>
+          <Route element={<Episodes />} path="/episodes"></Route>
+          <Route element={<Episode />} path="/episodes/:episodeId"></Route>
+          <Route element={<Characters />} path="/characters"></Route>
+          <Route
+            element={<Character />}
+            path="/characters/:characterId"
+          ></Route>
+          <Route element={<Locations />} path="/locations"></Route>
+          <Route element={<Location />} path="/locations/:locationId"></Route>
+          <Route element={<Home />} path="/"></Route>
+        </Routes>
+      </main>
+    </div>
+
     <Footer />
   </div>
 );

@@ -1,1 +1,77 @@
-.Header {}
+.Header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.HeaderLinks {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HeaderLinks a {
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.HeaderLinks a:hover,
+.HeaderLinks a:focus {
+  color: rgb(255, 152, 0);
+}
+.HeaderActiveLinks a {
+  color: rgb(255, 152, 0);
+  padding: 0.5em 1em;
+}
+
+.HeaderLogo img {
+  max-width: 60px;
+}
+
+.HeaderTitle {
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+@media (min-width: 555px) {
+  .Header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .HeaderTitle {
+    text-align: center;
+    font-weight: 900;
+    font-size: 5rem;
+  }
+
+  .HeaderLinks {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .HeaderLinks a {
+    padding: 0 0.5em;
+    font-weight: bold;
+  }
+
+  .HeaderLinks a:hover,
+  .HeaderLinks a:focus {
+    color: rgb(255, 152, 0);
+  }
+  .HeaderActiveLinks a {
+    border: 1px rgb(255, 152, 0) solid;
+    border-radius: 7px;
+    padding: 0.5em 1em;
+  }
+
+  .HeaderActiveLinks a:hover,
+  .HeaderActiveLinks a:focus {
+    color: #fff;
+    background-color: rgb(255, 152, 0);
+  }
+}
