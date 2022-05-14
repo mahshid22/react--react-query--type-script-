@@ -1,7 +1,6 @@
-import React, { FC } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-// import { Switch, Route, Link as RouterLink } from "react-router-dom";
 
 interface HeaderProps {}
 
@@ -12,18 +11,38 @@ const Header = () => (
         <img src="./images/icons/morty-smith.png" alt="logo icon" />
       </div>
       <div className={styles.HeaderLinks}>
-        <Link to="/" className={styles.HeaderActiveLinks}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles.HeaderActiveLinks : ""
+          }
+          to="/"
+        >
           <a href="">home</a>
-        </Link>
-        <Link to="/Episodes">
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles.HeaderActiveLinks : ""
+          }
+          to="/Episodes"
+        >
           <a href="">Episodes</a>
-        </Link>
-        <Link to="/Locations">
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles.HeaderActiveLinks : ""
+          }
+          to="/Locations"
+        >
           <a href="">Locations</a>
-        </Link>
-        <Link to="/Characters">
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles.HeaderActiveLinks : ""
+          }
+          to="/Characters"
+        >
           <a href="">Characters</a>
-        </Link>
+        </NavLink>
       </div>
     </nav>
     <h1 className={styles.HeaderTitle}>The Rick and Morty</h1>

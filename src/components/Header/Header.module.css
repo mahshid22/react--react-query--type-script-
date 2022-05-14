@@ -72,8 +72,7 @@
     padding: 0.5em 1em;
   }
 
-  .HeaderActiveLinks a:hover,
-  .HeaderActiveLinks a:focus {
+  .HeaderActiveLinks a:hover {
     color: #fff;
     background-color: rgb(255, 152, 0);
   }
