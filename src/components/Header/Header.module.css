@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   background-color: #fff;
+  min-height: 80px;
 }
 
 .HeaderLinks {
