@@ -12,7 +12,7 @@ const Header = () => (
         <img src="./images/icons/morty-smith.png" alt="logo icon" />
       </div>
       <div className={styles.HeaderLinks}>
-        <Link to="/home" className={styles.HeaderActiveLinks}>
+        <Link to="/" className={styles.HeaderActiveLinks}>
           <a href="">home</a>
         </Link>
         <Link to="/Episodes">
