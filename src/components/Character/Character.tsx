@@ -4,6 +4,7 @@ import styles from "./Character.module.css";
 import { useParams } from "react-router";
 import useEpisode from "../../hooks/episode";
 import { stat } from "fs";
+import { Link } from "react-router-dom";
 
 interface CharacterProps {}
 
@@ -36,7 +37,9 @@ function Episode({ id }: { id: string }) {
   if (status !== "success") return <div>is Loading ...</div>;
   return (
     <div>
-      {data.episode} - {data.name} - {data.air_date}
+      <Link to={`/episodes/${data.id}`}>
+        {data.episode} - {data.name} - {data.air_date}
+      </Link>
     </div>
   );
 }
