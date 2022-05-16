@@ -1,1 +1,14 @@
-.Characters {}
+.Characters {
+  color: #fff;
+}
+.Characters h2 {
+  font-size: 3rem;
+}
+.Characters p {
+  font-size: 2rem;
+  padding-bottom: 1em;
+}
+
+.Characters a:hover {
+  text-decoration: underline !important;
+}
