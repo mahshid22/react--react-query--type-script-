@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 
 interface HeaderProps {}
@@ -8,7 +8,9 @@ const Header = () => (
   <>
     <nav className={styles.Header}>
       <div className={styles.HeaderLogo}>
-        <img src="./images/icons/morty-smith.png" alt="logo icon" />
+        <Link to="/">
+          <img src="./images/icons/morty-smith.png" alt="logo icon" />
+        </Link>
       </div>
       <div className={styles.HeaderLinks}>
         <NavLink
