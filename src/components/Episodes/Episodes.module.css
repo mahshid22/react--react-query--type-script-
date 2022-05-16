@@ -1,1 +1,14 @@
-.Episodes {}
+.Episodes {
+  color: #fff;
+}
+.Episodes h2 {
+  font-size: 3rem;
+}
+.Episodes p {
+  font-size: 2rem;
+  padding-bottom: 1em;
+}
+
+.Episodes a:hover {
+  text-decoration: underline !important;
+}
