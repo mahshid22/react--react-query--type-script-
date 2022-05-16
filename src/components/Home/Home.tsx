@@ -13,7 +13,7 @@ const Home = () => {
     <div className={styles.Home}>
       {characters &&
         characters.results.map((chr, index) => {
-          return <Card key={index} character={chr} />;
+          return <Card key={chr.id + chr.created} character={chr} />;
         })}
     </div>
   );
