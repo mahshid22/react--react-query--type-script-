@@ -18,12 +18,12 @@ const Episodes = () => {
       <h2>Episodes :</h2>
       {episodes.results.map((episode, index) => {
         return (
-          <Link to={`/episodes/${episode.url?.split("/")?.[5]}`}>
+          <Link to={`/episodes/${episode.id}`}>
             <p
               onMouseEnter={async () => {
                 await queryClient.prefetchQuery(
-                  `episode-${episode.url?.split("/")?.[5]}`,
-                  () => getEpisode(Number(episode.url?.split("/")?.[5])),
+                  `episode-${episode.id}`,
+                  () => getEpisode(Number(episode.id)),
                   {
                     staleTime: 70 * 1000 /* 70 second */,
                   }

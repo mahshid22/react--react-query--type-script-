@@ -18,12 +18,12 @@ const Characters: FC<CharactersProps> = () => {
       <h2>Character :</h2>
       {Characters.results.map((Character, index) => {
         return (
-          <Link to={`/characters/${Character.url?.split("/")?.[5]}`}>
+          <Link to={`/characters/${Character.id}`}>
             <p
               onMouseEnter={async () => {
                 await queryClient.prefetchQuery(
-                  `character-${Character.url?.split("/")?.[5]}`,
-                  () => getCharacter(Number(Character.url?.split("/")?.[5])),
+                  `character-${Character.id}`,
+                  () => getCharacter(Number(Character.id)),
                   {
                     staleTime: 70 * 1000 /* 70 second */,
                   }
