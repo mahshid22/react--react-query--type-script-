@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import useCharacter from "../../hooks/character";
 import useEpisode from "../../hooks/episode";
 import styles from "./Episode.module.css";
@@ -28,6 +29,10 @@ const Episode: FC<EpisodeProps> = () => {
 function Character({ id }: { id: string }) {
   const { status, data, error, isFetching } = useCharacter(Number(id));
   if (status !== "success") return <div>is Loading</div>;
-  return <div>{data.name}</div>;
+  return (
+    <div>
+      <Link to={`/characters/${data.id}`}>{data.name}</Link>
+    </div>
+  );
 }
 export default Episode;
