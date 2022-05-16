@@ -1,5 +1,7 @@
 .Characters {
   color: #fff;
+  width: 95%;
+  margin: 0 auto;
 }
 .Characters h2 {
   font-size: 3rem;

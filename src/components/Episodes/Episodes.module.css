@@ -1,5 +1,7 @@
 .Episodes {
   color: #fff;
+  width: 95%;
+  margin: 0 auto;
 }
 .Episodes h2 {
   font-size: 3rem;
