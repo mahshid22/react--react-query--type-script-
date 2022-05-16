@@ -1,74 +1,99 @@
 import React, { FC } from "react";
 import { useQueryClient } from "react-query";
+import { Link } from "react-router-dom";
 import { getCharacter } from "../../hooks/character";
-import { getEpisode } from "../../hooks/episode";
+import useEpisode, { getEpisode } from "../../hooks/episode";
 import { getLocation } from "../../hooks/location";
+import { characterType } from "../../types/character";
 import styles from "./Card.module.css";
 
-interface CardProps {}
+interface CardProps {
+  character: characterType;
+}
 
-const Card = () => {
+const Card = (props: CardProps) => {
+  const { character } = props;
   const queryClient = useQueryClient();
+  const { data: episode } = useEpisode(
+    Number(character.episode?.[0].split("/")?.[5])
+  );
+
+  console.log(character);
 
   return (
     <div className={styles.Card}>
-      <img src="./images/310.jpeg" alt="" />
+      <img src={character.image} alt="" />
       <div className={styles.characterCard}>
         <p className={styles.characterCardTitle}>
-          <a
-            href="#"
-            onMouseEnter={async () => {
-              await queryClient.prefetchQuery(
-                `character-1`,
-                () => getCharacter(1),
-                {
-                  staleTime: 70 * 1000 /* 70 second */,
-                }
-              );
-            }}
-          >
-            Self-Congratulatory Jerry
-          </a>
+          <Link to={`/characters/${character.url?.split("/")?.[5]}`}>
+            <a
+              href="#"
+              onMouseEnter={async () => {
+                await queryClient.prefetchQuery(
+                  `character-${character.url?.split("/")?.[5]}`,
+                  () => getCharacter(Number(character.url?.split("/")?.[5])),
+                  {
+                    staleTime: 70 * 1000 /* 70 second */,
+                  }
+                );
+              }}
+            >
+              {character.name}
+            </a>
+          </Link>
         </p>
         <p className={styles.status}>
-          <span className={styles.statusIcon}></span>
-          <span className={styles.statusIconNotActive}></span>
-          Unknown - Mythological Creature
+          <span
+            className={
+              character.status === "unknown"
+                ? styles.statusIconNotActive
+                : styles.statusIcon
+            }
+          ></span>
+          {character.status} - {character.species}
         </p>
 
         <div className={styles.location}>
           <p className={styles.cardLable}>Last known location:</p>
-          <a
-            href=""
-            onMouseEnter={async () => {
-              await queryClient.prefetchQuery(
-                `location-1`,
-                () => getLocation(1),
-                {
-                  staleTime: 70 * 1000 /* 70 second */,
-                }
-              );
-            }}
-          >
-            Nuptia 4
-          </a>
+          <Link to={`/locations/${character.location.url?.split("/")?.[5]}`}>
+            <a
+              href=""
+              onMouseEnter={async () => {
+                await queryClient.prefetchQuery(
+                  `location-${character.location.url?.split("/")?.[5]}`,
+                  () =>
+                    getLocation(
+                      Number(character.location.url?.split("/")?.[5])
+                    ),
+                  {
+                    staleTime: 70 * 1000 /* 70 second */,
+                  }
+                );
+              }}
+            >
+              {character.location.name}
+            </a>
+          </Link>
         </div>
         <div className={styles.episode}>
           <p className={styles.cardLable}>First seen in:</p>
-          <a
-            href=""
-            onMouseEnter={async () => {
-              await queryClient.prefetchQuery(
-                `episode-1`,
-                () => getEpisode(1),
-                {
-                  staleTime: 70 * 1000 /* 70 second */,
-                }
-              );
-            }}
-          >
-            Big Trouble in Little Sanchez
-          </a>
+          <Link to={`/episodes/${character.episode?.[0].split("/")?.[5]}`}>
+            <a
+              href=""
+              onMouseEnter={async () => {
+                await queryClient.prefetchQuery(
+                  `episode-${character.episode?.[0].split("/")?.[5]}`,
+                  () =>
+                    getEpisode(Number(character.episode?.[0].split("/")?.[5])),
+                  {
+                    staleTime: 70 * 1000 /* 70 second */,
+                  }
+                );
+              }}
+            >
+              {episode?.name}
+            </a>
+          </Link>
         </div>
       </div>
     </div>
