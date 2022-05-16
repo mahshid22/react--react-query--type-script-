@@ -1,1 +1,16 @@
-.Locations {}
+.Locations {
+  color: #fff;
+  width: 95%;
+  margin: 0 auto;
+}
+.Locations h2 {
+  font-size: 3rem;
+}
+.Locations p {
+  font-size: 2rem;
+  padding-bottom: 1em;
+}
+
+.Locations a:hover {
+  text-decoration: underline !important;
+}
