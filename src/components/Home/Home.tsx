@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import useCharacters from "../../hooks/characters";
 import Card from "../Card/Card";
 import styles from "./Home.module.css";
@@ -6,8 +6,7 @@ import styles from "./Home.module.css";
 interface HomeProps {}
 
 const Home = () => {
-  const { data: characters, status } = useCharacters();
-  console.log(characters);
+  const { data: characters } = useCharacters();
 
   return (
     <div className={styles.Home}>
