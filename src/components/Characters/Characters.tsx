@@ -1,24 +1,26 @@
-import React, { FC } from "react";
+import React, { useState } from "react";
 import { useQueryClient } from "react-query";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getCharacter } from "../../hooks/character";
-import useCharacters from "../../hooks/characters";
+import useCharactersPaged from "../../hooks/characterWithPagination";
 import styles from "./Characters.module.css";
 
 interface CharactersProps {}
 
-const Characters: FC<CharactersProps> = () => {
+const Characters = () => {
   const queryClient = useQueryClient();
-  const { data: Characters, status } = useCharacters();
+  const { pageId } = useParams();
+  const { data: Characters, isLoading } = useCharactersPaged(pageId);
 
-  if (status !== "success")
+  if (isLoading) {
     return <div className={styles.Characters}>is Loading ..</div>;
+  }
   return (
     <div className={styles.Characters}>
       <h2>Character :</h2>
-      {Characters.results.map((Character, index) => {
+      {Characters?.results.map((Character, index) => {
         return (
-          <Link to={`/characters/${Character.id}`}>
+          <Link to={`/character/${Character.id}`}>
             <p
               onMouseEnter={async () => {
                 await queryClient.prefetchQuery(
@@ -30,12 +32,18 @@ const Characters: FC<CharactersProps> = () => {
                 );
               }}
             >
-              {index + 1} - {Character.name} - {Character.gender}:{" "}
+              {Character.id} - {Character.name} - {Character.gender}:{" "}
               {Character.species}
             </p>
           </Link>
         );
       })}
+      <Link to={`/characters/${Number(pageId) - 1}`}>
+        <button disabled={!Characters?.info.prev}>-</button>
+      </Link>
+      <Link to={`/characters/${Number(pageId) + 1}`}>
+        <button disabled={!Characters?.info.next}>+</button>
+      </Link>
     </div>
   );
 };

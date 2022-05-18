@@ -21,11 +21,8 @@ const Layout = () => (
         <Routes>
           <Route element={<Episodes />} path="/episodes"></Route>
           <Route element={<Episode />} path="/episodes/:episodeId"></Route>
-          <Route element={<Characters />} path="/characters"></Route>
-          <Route
-            element={<Character />}
-            path="/characters/:characterId"
-          ></Route>
+          <Route element={<Characters />} path="/characters/:pageId"></Route>
+          <Route element={<Character />} path="/character/:characterId"></Route>
           <Route element={<Locations />} path="/locations"></Route>
           <Route element={<Location />} path="/locations/:locationId"></Route>
           <Route element={<Home />} path="/"></Route>

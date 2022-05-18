@@ -41,7 +41,7 @@ const Header = () => (
           className={({ isActive }) =>
             isActive ? styles.HeaderActiveLinks : ""
           }
-          to="/Characters"
+          to="/Characters/1"
         >
           <a href="">Characters</a>
         </NavLink>
