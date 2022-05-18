@@ -12,13 +12,8 @@ const getEpisodes = async ({ pageParam = 1 }) => {
 export default function useEpisodesInfiniteQuery() {
   return useInfiniteQuery("projects", (pageParam) => getEpisodes(pageParam), {
     getPreviousPageParam: (firstPage: IEpisodesResponce) =>
-      firstPage.info.prev ? firstPage.info.prev.split("/")?.[5] : undefined,
-    getNextPageParam: (lastPage: IEpisodesResponce) => {
-      console.log(lastPage.info.next?.split("=")?.[1]);
-
-      return lastPage.info.next
-        ? lastPage.info.next.split("=")?.[1]
-        : undefined;
-    },
+      firstPage.info.prev?.split("/")?.[5] ?? undefined,
+    getNextPageParam: (lastPage: IEpisodesResponce) =>
+      lastPage.info.next?.split("=")?.[1] ?? undefined,
   });
 }
