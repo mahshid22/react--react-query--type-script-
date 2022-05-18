@@ -1,43 +1,29 @@
-import axios from "axios";
-import React, { FC } from "react";
-import { useInfiniteQuery, useQueryClient } from "react-query";
+import React from "react";
 import { Link } from "react-router-dom";
-import { getEpisode } from "../../hooks/episode";
-import useEpisodes from "../../hooks/episodes";
 import styles from "./Episodes.module.css";
 import { useInView } from "react-intersection-observer";
-import { episodeType, IEpisodesResponce } from "../../types/episode";
+import { episodeType } from "../../types/episode";
 import useEpisodesInfiniteQuery from "../../hooks/episodesInfiniteQuery";
+import { useQueryClient } from "react-query";
+import { getEpisode } from "../../hooks/episode";
 
 interface EpisodesProps {}
 
 const Episodes = () => {
+  const queryClient = useQueryClient();
   const { ref, inView } = useInView();
-
-  const {
-    status,
-    data,
-    error,
-    isFetching,
-    isFetchingNextPage,
-    isFetchingPreviousPage,
-    fetchNextPage,
-    fetchPreviousPage,
-    hasNextPage,
-    hasPreviousPage,
-  } = useEpisodesInfiniteQuery();
+  const { status, data, isFetchingNextPage, fetchNextPage, hasNextPage } =
+    useEpisodesInfiniteQuery();
 
   React.useEffect(() => {
     if (inView) {
-      console.log(22);
-
       fetchNextPage();
     }
   }, [inView]);
 
   if (status !== "success")
     return <div className={styles.Characters}>is Loading ..</div>;
-  console.log(data);
+
   return (
     <div className={styles.Episodes}>
       <>
@@ -50,7 +36,17 @@ const Episodes = () => {
               {page.results.map((episode: episodeType) => {
                 return (
                   <Link to={`/episodes/${episode.id}`}>
-                    <p>
+                    <p
+                      onMouseEnter={async () => {
+                        await queryClient.prefetchQuery(
+                          `episode-${episode.id}`,
+                          () => getEpisode(Number(episode.id)),
+                          {
+                            staleTime: 70 * 1000 /* 70 second */,
+                          }
+                        );
+                      }}
+                    >
                       {episode.episode} - {episode.name}
                     </p>
                   </Link>
