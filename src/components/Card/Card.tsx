@@ -25,21 +25,19 @@ const Card = (props: CardProps) => {
       <img src={character.image} alt="" />
       <div className={styles.characterCard}>
         <p className={styles.characterCardTitle}>
-          <Link to={`/characters/${character.url?.split("/")?.[5]}`}>
-            <a
-              href="#"
-              onMouseEnter={async () => {
-                await queryClient.prefetchQuery(
-                  `character-${character.url?.split("/")?.[5]}`,
-                  () => getCharacter(Number(character.url?.split("/")?.[5])),
-                  {
-                    staleTime: 70 * 1000 /* 70 second */,
-                  }
-                );
-              }}
-            >
-              {character.name}
-            </a>
+          <Link
+            to={`/characters/${character.url?.split("/")?.[5]}`}
+            onMouseEnter={async () => {
+              await queryClient.prefetchQuery(
+                `character-${character.url?.split("/")?.[5]}`,
+                () => getCharacter(Number(character.url?.split("/")?.[5])),
+                {
+                  staleTime: 70 * 1000 /* 70 second */,
+                }
+              );
+            }}
+          >
+            {character.name}
           </Link>
         </p>
         <p className={styles.status}>
@@ -55,44 +53,38 @@ const Card = (props: CardProps) => {
 
         <div className={styles.location}>
           <p className={styles.cardLable}>Last known location:</p>
-          <Link to={`/locations/${character.location.url?.split("/")?.[5]}`}>
-            <a
-              href=""
-              onMouseEnter={async () => {
-                await queryClient.prefetchQuery(
-                  `location-${character.location.url?.split("/")?.[5]}`,
-                  () =>
-                    getLocation(
-                      Number(character.location.url?.split("/")?.[5])
-                    ),
-                  {
-                    staleTime: 70 * 1000 /* 70 second */,
-                  }
-                );
-              }}
-            >
-              {character.location.name}
-            </a>
+          <Link
+            to={`/locations/${character.location.url?.split("/")?.[5]}`}
+            onMouseEnter={async () => {
+              await queryClient.prefetchQuery(
+                `location-${character.location.url?.split("/")?.[5]}`,
+                () =>
+                  getLocation(Number(character.location.url?.split("/")?.[5])),
+                {
+                  staleTime: 70 * 1000 /* 70 second */,
+                }
+              );
+            }}
+          >
+            {character.location.name}
           </Link>
         </div>
         <div className={styles.episode}>
           <p className={styles.cardLable}>First seen in:</p>
-          <Link to={`/episodes/${character.episode?.[0].split("/")?.[5]}`}>
-            <a
-              href=""
-              onMouseEnter={async () => {
-                await queryClient.prefetchQuery(
-                  `episode-${character.episode?.[0].split("/")?.[5]}`,
-                  () =>
-                    getEpisode(Number(character.episode?.[0].split("/")?.[5])),
-                  {
-                    staleTime: 70 * 1000 /* 70 second */,
-                  }
-                );
-              }}
-            >
-              {episode?.name}
-            </a>
+          <Link
+            to={`/episodes/${character.episode?.[0].split("/")?.[5]}`}
+            onMouseEnter={async () => {
+              await queryClient.prefetchQuery(
+                `episode-${character.episode?.[0].split("/")?.[5]}`,
+                () =>
+                  getEpisode(Number(character.episode?.[0].split("/")?.[5])),
+                {
+                  staleTime: 70 * 1000 /* 70 second */,
+                }
+              );
+            }}
+          >
+            {episode?.name}
           </Link>
         </div>
       </div>

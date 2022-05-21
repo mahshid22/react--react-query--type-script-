@@ -24,7 +24,7 @@
 .HeaderLinks a:focus {
   color: rgb(255, 152, 0);
 }
-.HeaderActiveLinks a {
+.HeaderActiveLinks {
   color: rgb(255, 152, 0);
   padding: 0.5em 1em;
 }
@@ -61,7 +61,7 @@
     justify-content: space-between;
   }
   .HeaderLinks a {
-    padding: 0 0.5em;
+    padding: 0.5em 1em;
     font-weight: bold;
   }
 
@@ -69,14 +69,13 @@
   .HeaderLinks a:focus {
     color: rgb(255, 152, 0);
   }
-  .HeaderActiveLinks a {
+  .HeaderActiveLinks {
     border: 1px rgb(255, 152, 0) solid;
     border-radius: 7px;
-    padding: 0.5em 1em;
   }
 
-  .HeaderActiveLinks a:hover {
-    color: #fff;
+  .HeaderActiveLinks:hover {
+    color: #fff !important;
     background-color: rgb(255, 152, 0);
   }
 }
