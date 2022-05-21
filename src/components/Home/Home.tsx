@@ -7,6 +7,8 @@ interface HomeProps {}
 
 const Home = () => {
   const { data: characters } = useCharacters();
+  console.log(characters);
+  console.log(characters?.results);
 
   return (
     <div className={styles.Home}>

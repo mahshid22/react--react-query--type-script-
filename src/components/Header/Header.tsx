@@ -19,7 +19,7 @@ const Header = () => (
           }
           to="/"
         >
-          <a href="">home</a>
+          home
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -27,7 +27,7 @@ const Header = () => (
           }
           to="/Episodes"
         >
-          <a href="">Episodes</a>
+          Episodes
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -35,7 +35,7 @@ const Header = () => (
           }
           to="/Locations"
         >
-          <a href="">Locations</a>
+          Locations
         </NavLink>
         <NavLink
           className={({ isActive }) =>
@@ -43,7 +43,7 @@ const Header = () => (
           }
           to="/Characters/1"
         >
-          <a href="">Characters</a>
+          Characters
         </NavLink>
       </div>
     </nav>
