@@ -1,7 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+this project is react typeScript and use react-query for fetch APIs
 ## Available Scripts
 
 In the project directory, you can run:
