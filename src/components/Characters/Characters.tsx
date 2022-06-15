@@ -5,8 +5,6 @@ import { getCharacter } from "../../hooks/character";
 import useCharactersPaged from "../../hooks/characterWithPagination";
 import styles from "./Characters.module.css";
 
-interface CharactersProps {}
-
 const Characters = () => {
   const queryClient = useQueryClient();
   const { pageId } = useParams();

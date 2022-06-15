@@ -3,16 +3,14 @@ import Header from "../Header/Header";
 import styles from "./Layout.module.css";
 import { Route, Routes } from "react-router-dom";
 
-const Character = lazy(() => import("../Character/Character"));
-const Characters = lazy(() => import("../Characters/Characters"));
-const Home = lazy(() => import("../Home/Home"));
-const Episodes = lazy(() => import("../Episodes/Episodes"));
-const Episode = lazy(() => import("../Episode/Episode"));
-const Footer = lazy(() => import("../Footer/Footer"));
-const Locations = lazy(() => import("../Locations/Locations"));
-const Location = lazy(() => import("../Location/Location"));
-
-interface LayoutProps {}
+const Character = lazy(() => import("src/components/Character/Character"));
+const Characters = lazy(() => import("src/components/Characters/Characters"));
+const Home = lazy(() => import("src/components/Home/Home"));
+const Episodes = lazy(() => import("src/components/Episodes/Episodes"));
+const Episode = lazy(() => import("src/components/Episode/Episode"));
+const Footer = lazy(() => import("src/components/Footer/Footer"));
+const Locations = lazy(() => import("src/components/Locations/Locations"));
+const Location = lazy(() => import("src/components/Location/Location"));
 
 const Layout = () => (
   <div className={styles.Layout}>

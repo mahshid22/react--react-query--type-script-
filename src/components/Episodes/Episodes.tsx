@@ -7,8 +7,6 @@ import useEpisodesInfiniteQuery from "../../hooks/episodesInfiniteQuery";
 import { useQueryClient } from "react-query";
 import { getEpisode } from "../../hooks/episode";
 
-interface EpisodesProps {}
-
 const Episodes = () => {
   const queryClient = useQueryClient();
   const { ref, inView } = useInView();

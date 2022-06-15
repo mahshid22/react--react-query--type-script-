@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useCharacter from "../../hooks/character";
 import useLocationQuery from "../../hooks/location";
 import styles from "./Location.module.css";
@@ -9,9 +9,7 @@ interface LocationProps {}
 const Location: FC<LocationProps> = () => {
   const { locationId } = useParams();
 
-  const { status, data, error, isFetching } = useLocationQuery(
-    Number(locationId)
-  );
+  const { status, data } = useLocationQuery(Number(locationId));
   if (status !== "success") return <div>is loading ..</div>;
   return (
     <div className={styles.Location}>
@@ -26,8 +24,9 @@ const Location: FC<LocationProps> = () => {
     </div>
   );
 };
+
 function Character({ id }: { id: string }) {
-  const { status, data, error, isFetching } = useCharacter(Number(id));
+  const { status, data } = useCharacter(Number(id));
   if (status !== "success") return <div>is Loading</div>;
   return (
     <div>

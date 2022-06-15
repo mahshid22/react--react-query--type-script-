@@ -18,8 +18,6 @@ const Card = (props: CardProps) => {
     Number(character.episode?.[0].split("/")?.[5])
   );
 
-  console.log(character);
-
   return (
     <div className={styles.Card}>
       <img src={character.image} alt="" />

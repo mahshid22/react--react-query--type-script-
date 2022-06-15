@@ -5,8 +5,6 @@ import { getEpisode } from "../../hooks/episode";
 import useEpisodes from "../../hooks/episodes";
 import styles from "./Episodes.module.css";
 
-interface EpisodesProps {}
-
 const Episodes = () => {
   const { data: episodes, status } = useEpisodes();
   const queryClient = useQueryClient();
